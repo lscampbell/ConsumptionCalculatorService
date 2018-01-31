@@ -1,0 +1,38 @@
+version: 2
+jobs:
+    build:
+      docker:
+        - image: microsoft/dotnet:2.0.3-sdk
+
+      environment:
+        - DOTNET_CLI_TELEMETRY_OPTOUT: 1
+        - TERM: dumb
+
+      working_directory: ~/build
+    
+      steps:
+        - checkout
+        - run: cat ConsumptionCalculatorService/ConsumptionCalculatorService.csproj ConsumptionCalculatorService.Tests/ConsumptionCalculatorService.Tests.csproj > projCache.txt
+
+        - restore_cache:
+            keys:
+              - dependency-cache-{{ checksum "projCache.txt" }}
+
+        - run: dotnet restore
+
+        - save_cache:
+            key: dependency-cache-{{ checksum "projCache.txt" }}
+            paths:
+              - ~/.nuget/
+
+        - run: mkdir -p ~/xunit
+
+        - run:
+            name: Run Unit Tests and Save results 
+            command: |
+              cd ConsumptionCalculatorService.Tests
+              dotnet xunit --fx-version 2.0.3 -namespace "ConsumptionCalculator_Tests" -xml ~/xunit/unitResults.xml
+            when: always
+
+        - store_artifacts:
+            path: ~/xunit     

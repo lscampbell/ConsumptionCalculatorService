@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="react-app" asp-prerender-module="ClientApp/dist/main-server">Loading...</div>
+
+@section scripts {
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+    <script src="~/dist/webSocketManager.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+        crossorigin="anonymous"></script>
+    <script src="~/dist/webSocketClient.js" asp-append-version="true"></script>
+    <script src="~/dist/webSocketRawClient.js" asp-append-version="true"></script>
+}

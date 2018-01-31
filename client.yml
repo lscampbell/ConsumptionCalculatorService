@@ -1,0 +1,11 @@
+version: "2.1"
+services:
+  kafka:
+    image: jeqo/apache-kafka-client:0.10.1.0-2.11
+    command: sleep infinity
+    networks:
+      - default
+      - consumptioncalculatorservice_default #(2)
+networks: #(1)
+  consumptioncalculatorservice_default:
+    external: true

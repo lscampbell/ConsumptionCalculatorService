@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/ConsumptionCalculator/ConsumptionCalculator.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildIt",
+            "suppressTaskName": true,
+            "args": [
+                "build",
+                "${workspaceRoot}/ConsumptionProducer/ConsumptionProducer.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile",
+            "dependsOn": true
+        },
+        {
+            "label": "sub",
+            "suppressTaskName": true,
+            "args": [
+                "build",
+                "${workspaceRoot}/ConsumptionConsumer/ConsumptionConsumer.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile",
+            "dependsOn": true
+        }
+    ]
+}

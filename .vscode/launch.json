@@ -1,0 +1,50 @@
+{
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildIt",
+            "program": "${workspaceRoot}/ConsumptionProducer/bin/Debug/netcoreapp2.0/ConsumptionProducer.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/ConsumptionProducer",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "sub",
+            "program": "${workspaceRoot}/ConsumptionConsumer/bin/Debug/netcoreapp2.0/ConsumptionConsumer.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/ConsumptionConsumer",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/ConsumptionCalculator/bin/Debug/netcoreapp2.0/ConsumptionCalculator.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/ConsumptionConsumer",
+            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
